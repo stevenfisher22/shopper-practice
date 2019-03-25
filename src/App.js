@@ -4,6 +4,7 @@ import Nav from './Nav';
 
 // Components and Other Imports
 import ItemPage from './ItemPage';
+import CartPage from './CartPage';
 import {items} from './static-data';
 
 // CSS
@@ -38,9 +39,36 @@ class App extends React.Component {
                     />
                 );
             case 1: 
-                return <span>Cart</span>
+                return this.renderCart();
         }
-    };
+    }
+
+    renderCart() {
+        // Count how many of each item is in the cart
+        let itemCounts = this.state.cart.reduce((itemCounts, itemId) => {
+            itemCounts[itemId] = itemCounts[itemId] || 0;
+            itemCounts[itemId]++;
+            return itemCounts;
+        }, {});
+
+        // Create an array of items
+        let cartItems = Object.keys(itemCounts).map(itemId => {
+            // Find the item by its id
+            var item = items.find(item =>
+                item.id === parseInt(itemId, 10)
+            );
+
+            // Create a new 'item' and add the 'count' property
+            return  {
+                ...item,
+                count: itemCounts[itemId]
+            }
+        });
+
+        return (
+            <CartPage items={cartItems}/>
+        )
+    }
 
     render() {
         let {activeTab} = this.state;
