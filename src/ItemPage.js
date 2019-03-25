@@ -13,10 +13,13 @@ function ItemPage({items, onAddToCart}) {
         <ul className="item-page-items">
             {items.map(item => 
                 <li key={item.id} className="item-page-item">
-                    <Item 
-                        item={item}
-                        onAddToCart={() => onAddToCart(item)}
-                    />
+                    <Item item={item}>
+                        <button
+                            className="item-add-to-cart"
+                            onClick={() => onAddToCart(item)}>
+                            Add to Cart
+                        </button>
+                    </Item>
                 </li>
             )}
         </ul>
