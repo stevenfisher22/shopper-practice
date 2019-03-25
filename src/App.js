@@ -1,5 +1,12 @@
+// React Elements
 import React from 'react';
 import Nav from './Nav';
+
+// Components and Other Imports
+import ItemPage from './ItemPage';
+import {items} from './static-data';
+
+// CSS
 import './app.css';
 
 class App extends React.Component {
@@ -16,7 +23,7 @@ class App extends React.Component {
     renderContent() {
         switch(this.state.activeTab) {
             default: 
-            case 0: return <span>Items</span>
+            case 0: return <ItemPage items={items}/>
             case 1: return <span>Cart</span>
         }
     }
