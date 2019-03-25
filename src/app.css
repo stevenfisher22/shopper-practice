@@ -25,3 +25,15 @@
 .app-content {
     margin: 0 20px;
 }
+
+.app-nav-item a {
+    cursor: pointer;
+}
+
+.app-nav-item a:hover {
+    color: #999;
+}
+
+.app-nav-item.selected {
+    border-bottom-color: #FFAA3F;
+}
