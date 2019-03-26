@@ -68,7 +68,7 @@ class App extends React.Component {
                 item.id === parseInt(itemId, 10)
             );
 
-            // Create a new 'item' and add the 'count' property
+            // Create a new 'item' and add the 'count' property 
             return  {
                 ...item,
                 count: itemCounts[itemId]
